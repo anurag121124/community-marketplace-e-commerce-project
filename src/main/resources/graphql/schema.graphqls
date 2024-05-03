@@ -1,0 +1,48 @@
+scalar LocalDate
+scalar LocalDateTime
+
+type User {
+  id: Int!
+  name: String!
+  userEmail: String!
+  password: String!
+  userPhone: String!
+  address: String!
+}
+
+input UserInput {
+  name: String!
+  userEmail: String!
+  password: String!
+  userPhone: String!
+  address: String!
+}
+
+type Product {
+  id: ID
+  name: String
+  price: Int
+  description: String
+  category: String
+  image: String
+  createdAt: LocalDateTime
+}
+
+input ProductInput {
+  name: String
+  price: Int
+  description: String
+  category: String
+  image: String
+  createdAt: String
+}
+
+type Mutation {
+  createUser(user: UserInput!): User
+  createProduct(product: ProductInput!): Product
+}
+
+type Query {
+  getUserById(id: Int!): User
+  getProductById(id: ID!): Product
+}
