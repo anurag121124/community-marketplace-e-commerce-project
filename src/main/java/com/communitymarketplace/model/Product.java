@@ -35,5 +35,4 @@ public class Product {
     @JoinColumn(name="user_id")
     private User user;
 
-    private LocalDateTime createdAt = LocalDateTime.now(); // Set creation time automatically
 }

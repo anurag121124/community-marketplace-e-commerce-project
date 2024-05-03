@@ -1,5 +1,4 @@
-scalar LocalDate
-scalar LocalDateTime
+
 
 type User {
   id: Int!
@@ -20,21 +19,18 @@ input UserInput {
 
 type Product {
   id: ID
-  name: String
-  price: Int
-  description: String
-  category: String
-  image: String
-  createdAt: LocalDateTime
+  name: String!
+  price: Int!
+  description: String!
+  image: String!
+
 }
 
 input ProductInput {
-  name: String
-  price: Int
-  description: String
-  category: String
-  image: String
-  createdAt: String
+  name: String!
+  price: Int!
+  description: String!
+  image: String!
 }
 
 type Mutation {
@@ -44,5 +40,6 @@ type Mutation {
 
 type Query {
   getUserById(id: Int!): User
-  getProductById(id: ID!): Product
+  getAllProducts: [Product]!
 }
+

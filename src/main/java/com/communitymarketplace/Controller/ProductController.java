@@ -9,17 +9,19 @@ import org.springframework.graphql.data.method.annotation.QueryMapping;
 
 import com.communitymarketplace.model.Product;
 import com.communitymarketplace.services.ProductServices;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class ProductController {
     @Autowired
     private ProductServices productServices;
 
-    @MutationMapping // Expose this method as a GraphQL mutation
-    public Product createProduct(@Argument Product product) {
-        return productServices.createProduct(product);
+    @MutationMapping("createProduct")
+    public Product createProduct(@Argument("product")  Product product) {
+        return this.productServices.createProduct(product);
     }
 
-    @QueryMapping // Expose this method as a GraphQL query
+    @QueryMapping
     public List<Product> getAllProducts() {
         return productServices.getAllProducts();
     }
